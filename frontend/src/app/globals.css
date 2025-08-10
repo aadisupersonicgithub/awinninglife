@@ -1,0 +1,290 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 17, 24, 39;
+  --background-start-rgb: 249, 250, 251;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8b5cf6;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7c3aed;
+}
+
+/* Custom Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Custom Components */
+.btn-primary {
+  @apply px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium rounded-full hover:opacity-90 transition-opacity shadow-lg hover:shadow-xl;
+}
+
+.btn-outline {
+  @apply px-8 py-3 bg-transparent border-2 border-white text-white font-medium rounded-full hover:bg-white/10 transition-colors;
+}
+
+.section-title {
+  @apply text-4xl md:text-5xl font-bold text-gray-900 mb-6;
+}
+
+.section-subtitle {
+  @apply text-lg text-gray-600 max-w-3xl mx-auto;
+}
+
+/* Custom Grid Pattern */
+.bg-grid {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(229 231 235 / 0.5)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}
+
+/* Custom Underline Animation */
+.underline-animate {
+  @apply relative inline-block;
+}
+
+.underline-animate::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 transition-all duration-300;
+}
+
+.underline-animate:hover::after {
+  @apply w-full;
+}
+
+/* Custom Card Hover Effect */
+.card-hover {
+  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+}
+
+/* Custom Blob Animation */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+/* Custom Gradient Text */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600;
+}
+
+/* Custom Form Inputs */
+.input-field {
+  @apply w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all;
+}
+
+/* Custom Checkbox */
+.checkbox-custom {
+  @apply h-5 w-5 rounded border-gray-300 text-purple-600 focus:ring-purple-500;
+}
+
+/* Custom Radio */
+.radio-custom {
+  @apply h-5 w-5 border-gray-300 text-purple-600 focus:ring-purple-500;
+}
+
+/* Custom Select */
+.select-custom {
+  @apply block w-full pl-3 pr-10 py-3 text-base border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 rounded-lg;
+}
+
+/* Custom Tabs */
+.tab-active {
+  @apply border-purple-500 text-purple-600 border-b-2 font-medium;
+}
+
+.tab-inactive {
+  @apply border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-b-2 font-medium;
+}
+
+/* Custom Accordion */
+.accordion-content {
+  @apply overflow-hidden transition-all duration-300 ease-in-out;
+}
+
+/* Custom Tooltip */
+.tooltip {
+  @apply invisible absolute;
+}
+
+.has-tooltip:hover .tooltip {
+  @apply visible z-50;
+}
+
+/* Custom Badge */
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.badge-primary {
+  @apply bg-purple-100 text-purple-800;
+}
+
+.badge-secondary {
+  @apply bg-pink-100 text-pink-800;
+}
+
+/* Custom Alert */
+.alert {
+  @apply p-4 rounded-lg;
+}
+
+.alert-success {
+  @apply bg-green-50 text-green-800;
+}
+
+.alert-error {
+  @apply bg-red-50 text-red-800;
+}
+
+.alert-warning {
+  @apply bg-yellow-50 text-yellow-800;
+}
+
+.alert-info {
+  @apply bg-blue-50 text-blue-800;
+}
+
+/* Custom Loading Spinner */
+.loading-spinner {
+  @apply animate-spin rounded-full border-4 border-solid border-purple-600 border-t-transparent h-8 w-8;
+}
+
+/* Custom Pulse Animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Custom Slide In Animation */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.5s ease-out forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s ease-out forwards;
+}
+
+/* Custom Scale Animation */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out forwards;
+}
